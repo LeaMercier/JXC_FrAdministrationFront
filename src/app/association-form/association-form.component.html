@@ -1,0 +1,26 @@
+<div class="container">
+  <h4>Veuillez remplir les informations de l'utilisateur</h4>
+  <form [formGroup]="profileForm" (submit)="submit()">
+    <div>
+      <label>
+        Lastname : <input formControlName="lastname" />
+      </label>
+    </div>
+    <div>
+      <label>
+        Firstname : <input formControlName="firstname" />
+      </label>
+    </div>
+    <div>
+      <label>
+        Age: <input formControlName="age" />
+      </label>
+    </div>
+    <div>
+      <label>
+        Id : <input formControlName="id" />
+      </label>
+    </div>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  </form>
+</div>
