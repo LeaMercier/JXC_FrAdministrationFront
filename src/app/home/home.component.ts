@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   goToProfil(){
-    this.route.navigateByUrl("/user");
+    console.log(this.service.getIdUser())
+    this.route.navigateByUrl("/users/"+this.service.getIdUser()?.toString());
   }
 }

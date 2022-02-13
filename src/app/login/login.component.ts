@@ -17,14 +17,20 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(this.tokenStorageService.isLogged()){
+      this.route.navigateByUrl("/home");
+    }
   }
 
   login(): void {
     const username: string = (document.getElementById('username') as HTMLInputElement).value;
+    console.log((Number)(username))
+    this.tokenStorageService.setIdUser((Number)(username));
     const password: string = (document.getElementById('password') as HTMLInputElement).value;
     this.api.post({endpoint: '/auth/login', data: { username, password },})
     .then(response => {
-      this.tokenStorageService.save(response.access_token);
+      this.tokenStorageService.save(response.access_token, username);
+      window.location.reload(); // permet au  logout d'être directement pris en compte
       this.route.navigateByUrl("/home");
     });
   }

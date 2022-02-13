@@ -1,4 +1,21 @@
 table {
-    margin: 10%;
-    width: 75%;
+    margin-top: 10%;
+    border-collapse: collapse;
+    
 }
+
+td {
+    border: 0.5px solid lightgray;
+    padding: 8px;
+}
+
+th {
+    border: 0.5px solid lightgray;
+    background-color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    text-align: left
+    ;
+}
+  

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { RoleServiceService } from '../role-service.service';
 
 @Component({
   selector: 'app-users-list',
@@ -16,12 +17,19 @@ export class UsersListComponent implements OnInit {
   supprF: boolean = false;
   
   constructor(
-    private http: HttpClient,
+    private role : RoleServiceService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
+    console.log("roles")
+    this.role.getAllRoles().subscribe(res => {
+      console.log(res);
+    })
     const resquest: Observable<any> = this.http.get('http://localhost:3000/users', { observe: 'response' });
-    resquest.toPromise().then(response => this.dataSource = response.body);
+    resquest.toPromise().then(response => {
+      this.dataSource = response.body
+      console.log(this.dataSource)});
   }
 
   add() : void {

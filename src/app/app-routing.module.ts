@@ -5,6 +5,7 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AssociationListComponent } from './association-list/association-list.component';
 import { HomeComponent } from './home/home.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = 
 [
@@ -12,6 +13,7 @@ const routes: Routes =
   {path: '', component: LoginComponent},
   {path: 'home', component:HomeComponent, canActivate: [AuthGuard]},
   {path: 'users', component: UsersListComponent, canActivate: [AuthGuard]},
+  {path: 'users/:id', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'associations', component: AssociationListComponent, canActivate: [AuthGuard]},
 ];
 

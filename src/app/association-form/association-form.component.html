@@ -1,5 +1,5 @@
-<div class="container">
-  <h4>Veuillez remplir les informations de l'utilisateur</h4>
+<div *ngIf="add" class="container">
+  <h4>Veuillez remplir les informations de l'utilisateur à ajouter</h4>
   <form [formGroup]="profileForm" (submit)="submit()">
     <div>
       <label>
@@ -16,6 +16,13 @@
         Age: <input formControlName="age" />
       </label>
     </div>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="suppr" class="container">
+  <h4>Veuillez remplir les informations de l'utilisateur à ajouter</h4>
+  <form [formGroup]="profileForm" (submit)="submit()">
     <div>
       <label>
         Id : <input formControlName="id" />

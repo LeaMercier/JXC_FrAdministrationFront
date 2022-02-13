@@ -1,7 +1,7 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatTableModule} from '@angular/material/table'; 
+import { MatTableModule } from '@angular/material/table'; 
 import { TokenHttpInterceptor } from './interceptors/token.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,9 @@ import { AssociationListComponent } from './association-list/association-list.co
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AssociationFormComponent } from './association-form/association-form.component';
+import {MatListModule} from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { AssociationFormComponent } from './association-form/association-form.co
     MatTableModule,
     MatSortModule,
     ReactiveFormsModule,
+    MatListModule,
     HttpClientModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   providers: [
     {

@@ -15,16 +15,12 @@ export class NavComponent implements OnInit {
   constructor(
     private service: TokenStorageService,
     private route: Router
-    ) {
-      this.service.isLoggedObservable().subscribe(logged =>{
-        this.isLogged = (Boolean)(logged);
-      } 
-      );
-   }
+    ) {}
 
   ngOnInit(): void {
     this.service.isLoggedObservable().subscribe(logged =>{
       this.isLogged = (Boolean)(logged);
+      console.log(this.isLogged);
     });
   }
 
@@ -33,6 +29,13 @@ export class NavComponent implements OnInit {
     this.service.clear();
     this.isLogged = false;
     this.route.navigateByUrl("/login");
+  }
+
+  goHome(){
+    this.route.navigateByUrl("/home");
+    this.service.isLoggedObservable().subscribe(logged =>{
+      this.isLogged = (Boolean)(logged);
+    });
   }
   
 

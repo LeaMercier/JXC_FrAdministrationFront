@@ -57,8 +57,10 @@ export class AssociationFormComponent implements OnInit {
     return this.http.post<any>('http://localhost:3000/users/', data);
   }
 
-  sendDeleteRequest(): Observable<any> {
-    return this.http.delete<any>('http://localhost:3000/users/'+this.id);
+
+
+  sendDeleteRequest(link:string, data:object): Observable<any> {
+    return this.http.delete<any>(link, data);
   }
 
   
@@ -70,8 +72,6 @@ export class AssociationFormComponent implements OnInit {
     if(this.add){
       const postRequest = {firstname : this.firstname, lastname : this.lastname, age : this.age};
       console.log("est en train d'ajouter l'élément");
-      //const body = JSON.stringify(postRequest);
-     // const resquest: Observable<any> = this.sendPostRequest(postRequest);
       this.sendPostRequest(postRequest).subscribe(
         res => {
           console.log(res);
@@ -79,8 +79,8 @@ export class AssociationFormComponent implements OnInit {
         }
       );
     } else { // cas où on supprime
-      const postRequest = {firstname : this.firstname, lastname : this.lastname, age : this.age, id : this.id};
-      this.sendDeleteRequest().subscribe(
+      //this.sendDeleteRequest('http://localhost:3000/roles/' + this.)
+      this.sendDeleteRequest('http://localhost:3000/users/'+this.id, {}).subscribe(
         res => {
           console.log(res);
           this.list.ngOnInit();
