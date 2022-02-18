@@ -20,7 +20,6 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.service.isLoggedObservable().subscribe(logged =>{
       this.isLogged = (Boolean)(logged);
-      console.log(this.isLogged);
     });
   }
 

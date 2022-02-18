@@ -30,4 +30,36 @@
   <button (click)="supr()">Suppr a user</button>
 </div>
 
-<app-association-form *ngIf="wantToAddOrSuppr" [add]="addF" [suppr]="supprF"></app-association-form>
+<div *ngIf="addF" class="container">
+  <h4>Veuillez remplir les informations de l'utilisateur à ajouter</h4>
+  <form [formGroup]="profileForm" (submit)="submit()">
+    <div>
+      <label>
+        Lastname : <input formControlName="lastname" />
+      </label>
+    </div>
+    <div>
+      <label>
+        Firstname : <input formControlName="firstname" />
+      </label>
+    </div>
+    <div>
+      <label>
+        Age: <input formControlName="age" />
+      </label>
+    </div>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="supprF" class="container">
+  <h4>Veuillez remplir les informations de l'utilisateur à ajouter</h4>
+  <form [formGroup]="profileForm" (submit)="submit()">
+    <div>
+      <label>
+        Id : <input formControlName="id" />
+      </label>
+    </div>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  </form>
+</div>
