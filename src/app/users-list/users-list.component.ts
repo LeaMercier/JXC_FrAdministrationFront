@@ -26,6 +26,7 @@ export class UsersListComponent implements OnInit {
     this.role.getAllRoles().subscribe(res => {
       console.log(res);
     })
+    
     const resquest: Observable<any> = this.http.get('http://localhost:3000/users', { observe: 'response' });
     resquest.toPromise().then(response => {
       this.dataSource = response.body

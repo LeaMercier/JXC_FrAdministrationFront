@@ -48,7 +48,6 @@ export class RoleServiceService {
   deleteRole(idUser:number, nameAssociation:string){
       let data = {userID : idUser, associationName : nameAssociation}
       console.log(this.api.delete({endpoint:'roles', data: data}));
-      return this.http.delete<any>('http://localhost:3000/roles/');
   }
 
   getRoleByIdAssociation(name:String){
