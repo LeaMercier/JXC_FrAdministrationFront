@@ -47,8 +47,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], VerbalProcessesController.prototype, "create", null);
 __decorate([
-    common_1.Get(':associationName'),
-    __param(0, common_1.Param()), __param(1, common_1.Body()),
+    common_1.Get('/assocation/:associationName'),
+    __param(0, common_1.Param()), __param(0, common_1.Param()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)

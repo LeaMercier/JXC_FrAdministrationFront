@@ -36,7 +36,7 @@ let VerbalProcessesService = class VerbalProcessesService {
         }));
     }
     async getByAssociationName(associationName, sort, order) {
-        return this.repository.find({
+        return await this.repository.find({
             where: {
                 association: await this.associationsService.get(associationName)
             },
@@ -45,21 +45,12 @@ let VerbalProcessesService = class VerbalProcessesService {
             },
         });
     }
-    async getByUserId(idUser){
-        return this.repository.find({
-            where: {
-                idVoters : await this.usersService.get(idUser)
-            }
-        })
-
-    }
     async getAll() {
         return this.repository.find();
     }
     async get(verbalProcesssId) {
-        return this.repository.findOne({ id: typeorm_2.Equal(verbalProcesssId) });
+        return this.repository.findOne({ id: verbalProcesssId });
     }
-
     async update(verbalProcesssId, idVoters, associationName, content, date) {
         const verbalProcessToUpdate = await this.get(verbalProcesssId);
         verbalProcessToUpdate.voters = await Promise.all(idVoters.map(this.usersService.getById));
@@ -74,7 +65,7 @@ let VerbalProcessesService = class VerbalProcessesService {
         return this.repository.save(verbalProcessToUpdate);
     }
     async delete(verbalProcesssId) {
-        return this.repository.delete({ id: typeorm_2.Equal(verbalProcesssId) });
+        return this.repository.delete({ id: verbalProcesssId });
     }
 };
 VerbalProcessesService = __decorate([

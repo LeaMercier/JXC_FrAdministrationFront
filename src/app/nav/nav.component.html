@@ -1,4 +1,20 @@
-<img *ngIf="isLogged" src="../assets/images/1024px-Logo_du_Gouvernement_de_la_République_française_2020.svg-624x374 (copy).png"
-width="100px" (click)="goHome()">
-<button *ngIf="isLogged" (click)="logout()">Logout</button>
+<div class="toolbar" role="banner">
+  <div class="image">
+    <img *ngIf="isLogged" src="../assets/images/1024px-Logo_du_Gouvernement_de_la_République_française_2020.svg-624x374 (copy).png"
+    width="100px" (click)="goHome()">
+  </div>
+  <button *ngIf="isLogged" (click)="logout()" class="logout">Logout</button>
   
+  <form  *ngIf="isLogged" class="example-form" [formGroup]="profileForm" (submit)="submit()">
+    <mat-form-field appearance="fill" >
+      <mat-label class="ask">please, enter name or id</mat-label>
+      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredListUser | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field> 
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  </form>
+</div>

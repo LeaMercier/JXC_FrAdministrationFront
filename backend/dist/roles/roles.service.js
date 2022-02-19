@@ -28,7 +28,6 @@ let RolesService = class RolesService {
         this.usersService = usersService;
     }
     async create(name, user, association) {
-        console.log(name, user, association);
         const role = await this.repository.create({
             name,
             user,
@@ -74,6 +73,20 @@ let RolesService = class RolesService {
             ]
         });
     }
+
+    async getIdUserByNameAndRole(associationName,rolename){
+        let test = await this.repository.find({
+            where: [
+                {
+                    name: rolename,
+                    association: await this.associationsService.get(associationName)
+                }
+            ]
+        })
+        return test[0].user.id;
+
+    }
+
     async update(userId, associationName, name) {
         var roleToUpdate = await this.getByUserAndAssociation(userId, associationName);
         
@@ -81,8 +94,10 @@ let RolesService = class RolesService {
         return this.repository.save(roleToUpdate);
     }
     async delete(userId, associationName) {
+        console.log("userId : " + userId + " associationName : " + associationName)
+        let user = await this.usersService.getById(userId)
         return this.repository.delete({
-            user: await this.usersService.getById(userId),
+            user: user,
             association: await this.associationsService.get(associationName)
         });
     }

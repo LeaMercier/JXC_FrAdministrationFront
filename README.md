@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+# Indications relative à l'excécution de se projet
+
+Bonjour madame, je suis sincèrement désolé de ne déposer tout cela qu'aujourd'hui mais j'étais persuadée que la date limite de dépot était dimanche comme pour la SR. J'espère donc que vous ne m'en tiendré pas trop rigueur...
+
+## Back
+
+Pour lancer ce dernier se placer dans le répertoire `backend` et lancer la commande `node dist/main.js`.
+
+## Front 
+
+Pour lancer le front, il vous suffit de lancer la commande `ng serve --open`

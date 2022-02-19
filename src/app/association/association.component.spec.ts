@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NaassociationComponent } from './association.component';
+import { AssociationComponent } from './association.component';
 
-describe('NaassociationComponent', () => {
-  let component: NaassociationComponent;
-  let fixture: ComponentFixture<NaassociationComponent>;
+describe('AssociationComponent', () => {
+  let component: AssociationComponent;
+  let fixture: ComponentFixture<AssociationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NaassociationComponent ]
+      declarations: [ AssociationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NaassociationComponent);
+    fixture = TestBed.createComponent(AssociationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

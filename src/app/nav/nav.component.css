@@ -1,9 +1,38 @@
-div {
-    margin: 15%;
-}
 
-button {
-    position: fixed;
+.logout {
+    position: absolute;
     right: 0;
+    top : 0;
 }
 
+.example-form {
+    position: absolute;
+    top: 0;
+    margin-left: 300px;
+}
+
+.image {
+    position: absolute;
+    top: 0;
+}
+
+.text {
+    color: rgb(255, 255, 255);
+}
+
+.ask {
+    color: rgb(255, 255, 255);
+}
+
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(14, 12, 124);
+    color: white;
+    font-weight: 600;
+  }

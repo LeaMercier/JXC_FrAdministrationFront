@@ -1,17 +1,36 @@
 <div class="container">
     <h1> Bienvenu sur votre espace utilisateur </h1>
 
-    <h2> Vous trouverez ci-dessous les informations vous concernant</h2>
+    <h2 *ngIf="!modificationsOn"> Vous trouverez ci-dessous les informations vous concernant</h2>
+    <h2 *ngIf="modificationsOn"> Vous êtes en train de modifier vos informations personnelles</h2>
 
-        <p>Id : {{id}}</p>
-        <p>Lastname : {{lastname}}</p>
-        <p>Firstname : {{firstname}}</p>
-        <p>Age : {{age}}</p>
+        <p *ngIf="!modificationsOn">Id : {{id}}</p>
+        <p *ngIf="!modificationsOn">Lastname : {{lastname}}</p>
+        <p *ngIf="!modificationsOn">Firstname : {{firstname}}</p>
+        <p *ngIf="!modificationsOn">Age : {{age}}</p>
 
-    <div clas="formulaire">
-
+    <div clas="formulaire" *ngIf="modificationsOn">  
+        <h4>Veuillez rentrer les informations que vous souhaitez modifier</h4>
+        <form [formGroup]="profileForm" (submit)="submit()">
+          <div>
+            <label>
+              Lastname : <input formControlName="lastname" />
+            </label>
+          </div>
+          <div>
+            <label>
+              Firstname : <input formControlName="firstname" />
+            </label>
+          </div>
+          <div>
+            <label>
+              Age: <input formControlName="age" />
+            </label>
+          </div>
+          <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+        </form>
     </div>
 
-    <button (click)="modify()">Modifier vos informations</button>
+    <button (click)="modify()"  *ngIf="!modificationsOn">Modifier vos informations</button>
 
 </div>

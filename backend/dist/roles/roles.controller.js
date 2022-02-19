@@ -25,9 +25,10 @@ let RolesController = class RolesController {
         return this.service.create(input.name, input.userId, input.associationName);
     }
     async get(input) {
-        console.log("get : ")
-        console.log(input);
         return this.service.getByUserAndAssociation(input.userId, input.associationName);
+    }
+    async getByNameAndRole(input) {
+        return this.service.getIdUserByNameAndRole(input.name, input.rolename);
     }
     async update(input) {
         
@@ -51,6 +52,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], RolesController.prototype, "get", null);
+__decorate([
+    common_1.Get(":name/:rolename"),
+    __param(0, common_1.Param()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], RolesController.prototype, "getByNameAndRole", null);
 __decorate([
     common_1.Put(),
     __param(0, common_1.Body()),

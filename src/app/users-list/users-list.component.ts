@@ -30,7 +30,6 @@ export class UsersListComponent implements OnInit {
 
 
   constructor(
-    private role : RoleServiceService,
     private http: HttpClient
   ) { }
 

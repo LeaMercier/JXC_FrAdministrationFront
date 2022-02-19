@@ -35,15 +35,7 @@ let AssociationsService = class AssociationsService {
         this.rolesService = rolesService;
     }
     async create(name, idUsers, roles, associationFormId, verbalProcessId) {
-        console.log("est rentré")
-        console.log(name)
-        console.log(idUsers)
-        console.log(roles)
-        console.log(associationFormId)
-        console.log(verbalProcessId)
         const associationForm = await this.associationFormsService.get(associationFormId);
-        console.log(associationForm.financialValidation)
-        console.log(associationForm.financialValidation)
         if (!associationForm.financialValidation || !associationForm.financialValidation) {
             return undefined;
         }
@@ -73,7 +65,7 @@ let AssociationsService = class AssociationsService {
         return new association_dto_1.AssociationDTO(association.name, association.dateOfCreation, members);
     }
     async get(name) {
-        return this.repository.findOne({ name: typeorm_2.Equal(name) });
+        return this.repository.findOne({ name: name });
     }
     async update(input, name) {
         const association = await this.get(name);
@@ -82,8 +74,20 @@ let AssociationsService = class AssociationsService {
         }
         return this.repository.save(association);
     }
+    async updateMembers(member, name){
+        const association = await this.get(name);
+        association.member
+    }
+
     async delete(name) {
-        this.repository.delete({ name: name });
+        let verbalProcess = await this.verbalProcessesService.getByAssociationName(name, 'date', 'DESC');
+        if (verbalProcess != undefined && verbalProcess.length != 0){
+            console.log(verbalProcess)
+            console.log(verbalProcess.length)
+            await this.verbalProcessesService.delete(verbalProcess[0].id);
+        }
+        await this.repository.delete({ name: name });
+
     }
 };
 AssociationsService = __decorate([

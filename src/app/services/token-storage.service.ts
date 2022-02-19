@@ -4,7 +4,8 @@ const TOKEN_KEY = 'token';
 const USERNAME_KEY = 'username';
 const IS_LOGGED_IN = 'isLoggedIn';
 const IS_LOGGED = 'true';
-var ID_USER = -1
+var ID_USER =-1;
+
 @Injectable({
   providedIn: 'root'
 })
